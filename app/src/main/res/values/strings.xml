@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">سجل المكالمات</string>
+    <string-array name="type">
+        <item>واردة</item>
+        <item>صادرة</item>
+        <item>لم يتم الرد عليها</item>
+    </string-array>
+</resources>
