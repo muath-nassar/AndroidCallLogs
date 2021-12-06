@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/drawable/call_missed.xml" value="0.1890625" />
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/drawable/call_received.xml" value="0.1890625" />
         <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/drawable/ic_baseline_call_made_24.xml" value="0.1890625" />
-        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/activity_call_logs.xml" value="0.25194401244167963" />
-        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/list_item.xml" value="0.25" />
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/activity_call_logs.xml" value="0.1" />
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/activity_main2.xml" value="0.1515625" />
+        <entry key="..\:/Users/Muath Nassar/Desktop/IUG_IT_Teacher_Assistance/CallLogs/app/src/main/res/layout/list_item.xml" value="0.16" />
       </map>
     </option>
   </component>

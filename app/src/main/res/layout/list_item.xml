@@ -35,13 +35,13 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:textAlignment="viewEnd"
         android:id="@+id/tvNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:text="TextView"
+        android:textAlignment="viewEnd"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvName"
@@ -69,6 +69,6 @@
         android:background="#FF5722"
         app:layout_constraintBottom_toBottomOf="parent"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
