@@ -14,7 +14,7 @@ class CallLogs : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        db = DatabaseUtility.db!!
+        db = MySqliteDB(this)
         binding = ActivityCallLogsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.list.adapter = RecAdapter(db.getAllCalls())

@@ -6,53 +6,49 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.calllogs.models.Call
 
-class MySqliteDB(context: Context): SQLiteOpenHelper(context.applicationContext, NAME,null, VERSION) {
-companion object{
-    var NAME = "my_database"
-    var VERSION = 1
-}
+class MySqliteDB(context: Context): SQLiteOpenHelper(context, NAME,null, VERSION){
+    companion object{
+        val NAME = "database"
+        val VERSION = 6
+    }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE table calls ( id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(150), number VARCHAR(15),type VARCHAR(30))")
+        db!!.execSQL("CREATE TABLE calls (id INTEGER PRIMARY KEY AUTOINCREMENT,type VARCHAR(50),name VARCHAR(50),number VARCHAR(13))")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db!!.execSQL("DROP TABLE IF EXISTS calls")
         onCreate(db)
     }
-    fun getAllCalls(): ArrayList<Call>{
-        val calls = ArrayList<Call>()
 
-        val db = this.writableDatabase
-        val sql =
-            "SELECT * FROM calls "
-        val cursor = db.rawQuery(sql,null);
+    fun addCall(call: Call):Boolean{
+        val cv = ContentValues()
+        cv.apply {
+            put("type",call.type)
+            put("name",call.name)
+            put("number",call.number)
+        }
+       return writableDatabase.insert("calls",null,cv) > 0
+    }
+    fun getAllCalls():ArrayList<Call>{
+        val arr = arrayListOf<Call>()
+        val cursor = readableDatabase.rawQuery("SELECT * FROM calls",null)
         if (cursor.count > 0){
             cursor.moveToFirst()
             while (!cursor.isAfterLast){
-                val nameIndex = cursor.getColumnIndex("name")
-                val numberIndex = cursor.getColumnIndex("number")
-                val typeIndex = cursor.getColumnIndex("type")
-                val name = cursor.getString(nameIndex)
-                val number = cursor.getString(numberIndex)
-                val type = cursor.getString(typeIndex)
-                calls.add(Call(type, name, number))
+                val id = cursor.getInt(0)
+                val type = cursor.getString(1)
+                val name = cursor.getString(2)
+                val number = cursor.getString(3)
+                arr.add(Call(type, name, number, id))
                 cursor.moveToNext()
             }
-            cursor.close()
         }
-        return calls
+        cursor.close()
+        return arr
     }
-    fun addCall(call : Call): Boolean{
-        val cv = ContentValues()
-        cv.put("name", call.name)
-        cv.put("number", call.number)
-        cv.put("type", call.type)
-
-        val db = writableDatabase
-        val action = db.insert("calls",null,cv)
-        db.close()
-        return action > 0
-
+    fun deleteCall(id : Int): Boolean{
+     return   writableDatabase.delete("calls"," id = $id",null) >0
     }
+
 }
