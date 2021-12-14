@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
             val call = Call(type, name, number,0)
             if (db.addCall(call)) {
                 Toast.makeText(this, "تمت الاضافة بنجاح", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, " لم تزبط معنا ", Toast.LENGTH_SHORT).show()
             }
         }
         binding.btnLogs.setOnClickListener {

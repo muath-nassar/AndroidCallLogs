@@ -13,6 +13,8 @@ import com.example.calllogs.models.Call
 
 class RecAdapter(var data: ArrayList<Call>):RecyclerView.Adapter<RecAdapter.MyViewHolder>() {
     lateinit var context: Context
+    private var initialData = data
+
     class MyViewHolder(val listItemBinding: ListItemBinding): RecyclerView.ViewHolder(listItemBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -44,7 +46,8 @@ class RecAdapter(var data: ArrayList<Call>):RecyclerView.Adapter<RecAdapter.MyVi
                 AlertDialog.Builder(context).apply {
                     setTitle("Delete alert")
                     setMessage("Deleted calls can't be restored.")
-                    setPositiveButton("delete"){ dialogInterface: DialogInterface, i: Int ->
+                    setPositiveButton("delete"){
+                            dialogInterface: DialogInterface, i: Int ->
                         if(MySqliteDB(context).deleteCall(data[position].id)){
                             data.removeAt(position)
                             notifyDataSetChanged()
@@ -66,5 +69,14 @@ class RecAdapter(var data: ArrayList<Call>):RecyclerView.Adapter<RecAdapter.MyVi
     override fun getItemCount(): Int {
         return data.size
     }
+    fun search(text : String){
+        val newArray = initialData.filter { call ->
+            call.name.contains(text) || call.number.startsWith(text)
+        }
+        data = newArray as ArrayList<Call>
+        notifyDataSetChanged()
+    }
+
+
 
 }
